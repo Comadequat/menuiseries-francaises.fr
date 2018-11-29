@@ -1,0 +1,51 @@
+{
+    "key": "group_56fe6e4cb5456",
+    "title": "Post Info",
+    "fields": [
+        {
+            "key": "field_56fe6e52c36fb",
+            "label": "Icon",
+            "name": "icomoon_icon",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fenetre": "Fen\u00eatre",
+                "porte": "Porte",
+                "escaliers": "Escaliers"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1459515260
+}

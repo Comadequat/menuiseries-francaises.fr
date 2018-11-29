@@ -1,0 +1,10 @@
+body#tinymce {
+  margin: 12px !important;
+  height: auto;
+  
+  .mce-item-table {
+    td {
+      padding: 5px !important;
+    }
+  }
+}

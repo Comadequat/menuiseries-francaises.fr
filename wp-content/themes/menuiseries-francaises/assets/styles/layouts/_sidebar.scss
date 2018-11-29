@@ -1,0 +1,14 @@
+.widget {
+  & + .widget {
+    margin-top: 40px;
+  }
+  
+  ul {
+    padding-left: 1em;
+    font-size: 18px;
+  }
+  
+  a {
+    color: inherit;
+  }
+}

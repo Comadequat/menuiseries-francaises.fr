@@ -1,0 +1,326 @@
+#header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #fff;
+  transition: background .3s ease-in-out;
+  
+  body.admin-bar & {
+    top: 32px;
+  }
+  
+  .brand {
+    position: absolute;
+    top: 0;
+    left: $grid-gutter-width/2;
+    display: block;
+    text-align: center;
+    height: 70px;
+    width: 156px;
+    background: #fff;
+    padding: 11px 9px 0 14px;
+    transition: all .3s ease-in-out;
+  }
+  
+  &.over-banner {
+    position: absolute;
+    top: 50%;
+    margin-top: -43px;
+    background: #31302f;
+    
+    body.admin-bar & {
+      top: 50%;
+    }
+  }
+  
+  &.dark {
+    background: #31302f;
+    
+    .brand {
+      height: 86px;
+      width: 190px;
+      padding: 14px 10px 0 17px;
+    }
+  }
+  
+  .brand-club {
+    position: absolute;
+    top: 11px;
+    right: 0;
+    width: 100px;
+    padding: 0 18px;
+    text-align: center;
+    
+    img {
+      margin: auto;
+    }
+  }
+  
+  @media (min-width: $screen-md-min) {
+    #navigation {
+      margin: 0 50px 0 200px;
+    
+      .nav {
+        text-align: center;
+        font-size: 0;
+        display: block;
+
+        > li {
+          position: relative;
+          display: inline-block;
+          vertical-align: top;
+          font-size: 14px;
+          font-weight: normal;
+          text-align: left;
+          text-transform: uppercase;
+
+          ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            min-width: 170px;
+            transition: all .3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            
+            li {
+              display: block;
+              
+              a {
+                display: block;
+                color: #000;
+                padding: 10px 20px;
+                text-decoration: none;
+                font-size: 12px;
+                transition: color .3s ease-in-out;
+              }
+              
+              &.active {
+                > a {
+                  color: $brand-primary;
+                }
+              }
+            }
+
+            ul {
+              left: 100%;
+              top: 0;
+              
+              a {
+                padding: 10px;
+              }
+            }
+          }
+          
+          &:before {
+            display: block;
+            content: "";
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 100%;
+            height: 4px;
+            background: $brand-primary;
+            opacity: 0;
+            transition: all .4s ease-in-out;
+            z-index: 10;
+          }
+
+          > a {
+            display: block;
+            padding: 20px 60px 20px 20px;
+            line-height: 30px;
+            color: #000;
+            transition: padding-top .3s ease-in-out, padding-bottom .3s ease-in-out, background .3s ease-in-out, color .3s ease-in-out;
+            
+            &:hover,
+            &:focus {
+              background: transparent;
+            }
+          }
+          
+          &:hover {
+            z-index: 20;
+            
+            > a {
+              color: $brand-primary;
+            }
+            
+            &:before {
+              opacity: 1;
+              right: 25%;
+            }
+          }
+          
+          &.active {
+            > a {
+              color: $brand-primary;
+            }
+            
+            &:before {
+              opacity: 1;
+              right: 25%;
+            }
+            
+            &.menu-contact {
+              li.menu-demande-de-contact.active {
+                a {
+                  color: initial;
+                  
+                  &:hover {
+                    color: $brand-primary;
+                  }
+                }
+              }
+            }
+          }
+        }
+        
+        li {
+          position: relative;
+          
+          &:hover {
+            > ul {
+              opacity: 1;
+              visibility: visible;
+            }
+            
+            > a {
+              color: $brand-primary;
+            }
+          }
+        }
+      }
+    }
+    
+    &.dark {
+      #navigation {
+        .nav {
+          > li {
+            > a {
+              color: #fff;
+              padding-top: 28px;
+              padding-bottom: 28px;
+            }
+            
+            &:hover {
+              > a {
+                background: rgba(#363232, .72);
+                color: $brand-primary;
+              }
+            }
+            
+            ul {
+              background: rgba(#363232, .72);
+              
+              a {
+                color: #fff;
+              }
+            }
+          }
+          
+          li {
+            &:hover {
+              > a {
+                color: $brand-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    @media (max-width: $screen-md-max) {
+      #navigation {
+        .nav {
+          > li {
+            > a {
+              padding-left: 10px !important;
+              padding-right: 30px !important;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: $screen-sm-max) {
+    #navigation {
+      overflow: auto;
+      margin: 0 -15px;
+      
+      &.collapsing {
+        overflow: hidden;
+      }
+    }
+    
+    .navbar-header {
+      margin: 0;
+      height: 60px;
+      float: none;
+    }
+    
+    &.dark .brand,
+    .brand {
+      width: 134px;
+      height: 60px;
+      padding: 10px 8px 0 12px;
+    }
+    
+    .navbar-toggle {
+      float: right;
+      margin: 10px 0 0;
+      padding: 5px 10px;
+      height: 40px;
+      border-color: $brand-primary;
+      
+      .icon-bar {
+        background: $brand-primary;
+      }
+    }
+    
+    #navigation {
+      .nav {
+        a {
+          display: block;
+          padding: 10px;
+        }
+        
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0 0 0 20px;
+          
+          a {
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    .navbar-header {
+      float: none;
+    }
+  }
+  
+  @media (min-width: $screen-md-min) {
+    .navbar-header {
+      float: left;
+    }
+  }
+}
+
+.page-header {
+  margin: 0 0 30px;
+}
