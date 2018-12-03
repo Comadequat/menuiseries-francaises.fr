@@ -235,7 +235,7 @@ Deny from env=bad_bot
 <IfModule mod_rewrite.c>
 RewriteCond %{REQUEST_METHOD} POST
 RewriteCond %{REQUEST_URI} ^(.*)?wp-comments-post\.php(.*)$
-RewriteCond %{HTTP_REFERER} !^http(s)?://(.*)?\.menuiseries-francaises\.fr [NC,OR]
+#RewriteCond %{HTTP_REFERER} !^http(s)?://(.*)?\.menuiseries-francaises\.fr [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^$
 RewriteRule .* http://127.0.0.1 [L]
 </IfModule>
