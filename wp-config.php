@@ -20,19 +20,19 @@ define('WP_CACHE', true); // Added by WP Rocket
 
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
-define('DB_NAME', 'atlantiqnwpress');
+define('DB_NAME', 'comadequsitesdev');
 
 
 /** Utilisateur de la base de données MySQL. */
-define('DB_USER', 'atlantiqnwpress');
+define('DB_USER', 'comadequsitesdev');
 
 
 /** Mot de passe de la base de données MySQL. */
-define('DB_PASSWORD', 'PtKqi435QJ7e');
+define('DB_PASSWORD', 'eXwWSFkYyg2PCcqp');
 
 
 /** Adresse de l'hébergement MySQL. */
-define('DB_HOST', 'mysql51-101.bdb');
+define('DB_HOST','comadequsitesdev.mysql.db');
 
 
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
