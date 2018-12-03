@@ -3,8 +3,8 @@ Contributors: funnycat
 Donate link: http://www.infowebmaster.fr/dons.php
 Tags: sitemap, generator, page list, site map, html sitemap, sitemap generator, dynamic sitemap, seo
 Requires at least: 3.0
-Tested up to: 4.6
-Stable tag: 1.6
+Tested up to: 4.9.4
+Stable tag: 1.6.1
 License: GPLv2 or later
 
 
@@ -101,6 +101,8 @@ If you want to add another language, feel free to [contact me](http://en.tonyarc
 
 == Changelog ==
 
+= 1.6.1 =
+* Nothing really new, but up-to-date
 = 1.6 =
 * Add main CSS class wrapper to add a style for the entire sitemap
 * Possibility to sort the posts ascendent or descendent

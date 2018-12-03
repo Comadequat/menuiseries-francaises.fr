@@ -1,14 +1,14 @@
-=== HTTP / HTTPS Remover ===
+=== HTTP / HTTPS Remover: SSL Mixed Content Fix ===
 Contributors: condacore
 Donate link: https://www.paypal.me/MariusBolik
-Tags: http, https, mixed content
+Tags: SSL, https, force SSL, mixed content, insecure content, secure website, website security, TLS, security, secure socket layers, HSTS
 Requires at least: 3.0.1
-Tested up to: 4.7.4
-Stable tag: 1.5.3
+Tested up to: 4.9.4
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A fix for mixed content! This Plugin removes HTTP and HTTPS protocols from all links. Works in Front- and Backend!
+A fix for mixed content! This Plugin creates protocol relative urls by removing http + https from links. Works in Front- and Backend!
 
 == Description ==
 
@@ -17,17 +17,32 @@ Main features:
 * Works in Front- and Backend
 * Makes every Plugin compatible with https
 * No Setup needed
-* Compatible with Visual Composer
+* Compatible with Visual Composer & Disqus
 * Fixes Google Fonts issues
 * Makes your website faster
 
 = What does this Plugin do? =
 
-Links with "http://" extensions need to change to contain the “s” part of HTTP protocol (https://) pointing out to an SSL-reserved port. A more elegant way of handling different protocols is to have only slashes where port is expected "//". so that page can use the protocol used to open the page itself:
-1. If page was loaded via http links with "//", it will be transformed to http://
-1. If page was loaded via https links with "//", it will be ultimately transformed to https://
- 
-Of course, this only applies to links that are loading content from your own domain, Google Fonts and other Google APIs. Your users are counting on you to protect them when they visit your website. It is important to fix your mixed content issues to protect all your visitors, including those on older browsers. And that's what this plugin does!
+With protocol relative url's you simply leave off the http: or https: part of the resource path. The browser will automatically load the resource using the same protocol that the page was loaded with.
+
+For example, an absolute url may look like
+`
+src="http://domain.com/script.js"
+`
+If you were to load this from a https page the script will not be loaded – as non-https resources are not loaded from https pages (for security reasons).
+
+The protocol relative url would look like
+`
+src="//domain.com/script.js"
+`
+and would load if the web page was http or https.
+
+**Tipp:** Check your Settings -> General page and make sure your WordPress Address and Site Address are starting with "https".
+Add the following two lines in your wp-config.php above the line that​ says "Stop Editing Here":
+`
+define('FORCE_SSL', true);
+define('FORCE_SSL_ADMIN',true);
+`
 
 = What is Mixed Content? =
 
@@ -47,17 +62,9 @@ With Plugin:
 src="//domain.com/script02.js"
 src="//domain.com/script03.js"`
 
-= If using CloudFlare or other Caching Plugin =
+= If using Cache Plugins =
 
-**If using CloudFlare Plugin:**
-1. Go to Settings -> CloudFlare -> More Settings
-2. Disable "Automatic HTTPS Rewrites" (Our Plugin is better) :)
-3. Go back to "Home" in CloudFlare Plugin and click "Purge Cache" for the changes to take effect!
-
-**Other Cache Plugin:**
 If the plugin isn't working like expected please purge/clear cache for the changes to take effect!
-
-For more info visit us at [condacore.com](https://condacore.com/ "CONDACORE Website")
 
 == Installation ==
 
@@ -75,7 +82,6 @@ In Firefox the padlock icon will reflect a warning with mixed content.
 
 = What if I am using a CDN? =
 
-Change all your CDN references to load with https://
 Change all your CDN references to load with // (this will adapt based on how the page is loaded)
 
 == Screenshots ==
@@ -83,6 +89,12 @@ Change all your CDN references to load with // (this will adapt based on how the
 1. The Sourcecode of the Website will look like this!
 
 == Changelog ==
+
+= 2.0 =
+*Release Date - 1 March 2018*
+
+* Completely rewritten code.
+* Bug fixes
 
 = 1.5.3 =
 *Release Date - 28 April 2017*

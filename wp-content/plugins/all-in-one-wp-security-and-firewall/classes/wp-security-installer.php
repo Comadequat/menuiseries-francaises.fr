@@ -1,4 +1,7 @@
 <?php
+if(!defined('ABSPATH')){
+    exit;//Exit if accessed directly
+}
 
 include_once(dirname(__FILE__) . '/wp-security-configure-settings.php');//Allows activating via wp-cli
 
@@ -26,7 +29,6 @@ class AIOWPSecurity_Installer
         AIOWPSecurity_Installer::create_db_tables();
         AIOWPSecurity_Configure_Settings::add_option_values();
         AIOWPSecurity_Installer::create_db_backup_dir(); //Create a backup dir in the WP uploads directory
-        AIOWPSecurity_Installer::miscellaneous_tasks();
     }
 
     static function create_db_tables()
@@ -172,7 +174,7 @@ class AIOWPSecurity_Installer
             //Case where previously installed plugin was reactivated
             //Let's copy the original configs back to the options table
             $updated = update_option('aio_wp_security_configs', $temp_cfgs);
-            if ($updated === FALSE) {
+            if (!$updated) {
                 $aio_wp_security->debug_logger->log_debug("AIOWPSecurity_Installer::run_installer() - Update of option settings failed upon plugin activation!", 4);
             }
             $aio_wp_security->configs->configs = $temp_cfgs; //copy the original configs to memory
@@ -190,25 +192,4 @@ class AIOWPSecurity_Installer
             return false;
         }
     }
-
-    static function miscellaneous_tasks()
-    {
-    }
-
-
-//    //Read entire contents of file at activation time and store serialized contents in our global_meta table
-//    static function backup_file_contents_to_db_at_activation($src_file, $key_description)
-//    {
-//        //First check if a backup entry already exists in the global_meta table
-//        global $wpdb;
-//        $aiowps_global_meta_tbl_name = AIOWPSEC_TBL_GLOBAL_META_DATA;
-//        $resultset = $wpdb->get_row("SELECT * FROM $aiowps_global_meta_tbl_name WHERE meta_key1 = '$key_description'", OBJECT);
-//        if($resultset){
-//            return; //Don't override original backup if one exists - so just return
-//        }
-//        
-//        //Otherwise read the contents of the file and store in global_meta table
-//        AIOWPSecurity_Utility_File::backup_file_contents_to_db($src_file, $key_description);
-//        return;
-//    }
 }
